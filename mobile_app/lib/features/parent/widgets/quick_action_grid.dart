@@ -4,6 +4,7 @@ import 'package:mobile_app/features/parent/providers/parent_children_provider.da
 import 'package:mobile_app/features/parent/views/attendance_history_view.dart';
 import 'package:mobile_app/features/parent/views/fee_ledger_view.dart';
 import 'package:mobile_app/features/parent/views/academic_analytics_view.dart';
+import 'package:mobile_app/features/shared/views/meeting_calendar_view.dart';
 
 class QuickActionGrid extends ConsumerWidget {
   const QuickActionGrid({super.key});
@@ -59,6 +60,9 @@ class QuickActionGrid extends ConsumerWidget {
                 );
               }),
               _buildActionCard(context, 'Homework', Icons.menu_book_rounded, Colors.blue, () {}),
+              _buildActionCard(context, 'Meetings', Icons.event_rounded, Colors.indigo, () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const MeetingCalendarView()));
+              }),
             ],
           ),
         ],
