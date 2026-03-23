@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_app/app.dart';
+import 'package:mobile_app/features/teacher/views/teacher_dashboard_view.dart';
 
 class LoginView extends ConsumerStatefulWidget {
   const LoginView({super.key});
@@ -181,12 +182,10 @@ class _LoginViewState extends ConsumerState<LoginView> with SingleTickerProvider
                   // Login Button
                   ElevatedButton(
                     onPressed: () {
-                      // Trigger OTP Login Flow simulation
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: const Text('Sending OTP...'),
-                          backgroundColor: theme.primaryColor,
-                        ),
+                      // Trigger Login Flow
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const TeacherDashboardView()),
                       );
                     },
                     child: const Text('Login'),
