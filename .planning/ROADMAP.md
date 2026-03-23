@@ -1,0 +1,129 @@
+# Roadmap: DG Smart – Teacher & Parent Panel
+
+## Overview
+
+High-performance mobile expansion for the DG Smart school management ecosystem, delivering specialized portals for Teachers (attendance, homework, marks) and Parents (monitoring, fees, meetings). Built on a secure, multi-tenant Node.js + MySQL backend with a premium Flutter frontend.
+
+## Phases
+
+- [ ] **Phase 1: Foundation & Multi-Tenant Auth** - Core API scaffolding and role-based secure login.
+- [ ] **Phase 2: Teacher Portal: Core Attendance** - Class management and real-time attendance marking.
+- [ ] **Phase 3: Parent Portal: Child Monitoring** - Multi-child dashboards and attendance history.
+- [ ] **Phase 4: Learning Management System (LMS)** - Homework distribution and study material sharing.
+- [ ] **Phase 5: Financials & Academic Results** - Fee payments (Razorpay) and exam marks entry.
+- [ ] **Phase 6: Advanced Communication & Polish** - Meeting booking, behaviour reports, and notification system.
+
+---
+
+## Phase Details
+
+### Phase 1: Foundation & Multi-Tenant Auth
+**Goal**: Establish the secure multi-tenant backend and authentication flow for both apps.
+**Depends on**: Nothing
+**Requirements**: AUTH-01, AUTH-02, AUTH-03, AUTH-04, AUTH-05
+**Success Criteria**:
+  1. User can login with Teacher or Parent role and receive a valid JWT.
+  2. Database queries are strictly isolated by `school_id`.
+  3. FCM tokens are correctly registered upon login.
+  4. Flutter Splash and Login screens follow "DreamsGuider" aesthetic.
+**Plans**: 3 plans
+**UI hint**: yes
+
+Plans:
+- [ ] 01-01: Backend scaffolding (MySQL schema, Express setup, Auth middleware).
+- [ ] 01-02: Auth API implementation (Login, OTP, JWT Refresh).
+- [ ] 01-03: Flutter App Base (Theme, Routing, Splash & Login screens).
+
+### Phase 2: Teacher Portal: Core Attendance
+**Goal**: Enable teachers to manage their assigned classes and mark student attendance.
+**Depends on**: Phase 1
+**Requirements**: T-CORE-01, T-CORE-02, T-ACT-01
+**Success Criteria**:
+  1. Teacher can see their assigned class-divisions on the dashboard.
+  2. Teacher can mark attendance (P/A/L/LV) for a specific class and date.
+  3. Attendance data persists accurately in the multi-tenant DB.
+**Plans**: 2 plans
+**UI hint**: yes
+
+Plans:
+- [ ] 02-01: Teacher Dashboard & Class List API/UI.
+- [ ] 02-02: Attendance Marking System (Grid UI + Mark API).
+
+### Phase 3: Parent Portal: Core Monitoring
+**Goal**: Provide parents with real-time visibility into their children's school status.
+**Depends on**: Phase 2
+**Requirements**: P-CORE-01, P-ACT-01
+**Success Criteria**:
+  1. Parent can switch between multiple children assigned to their account.
+  2. Child dashboard shows real-time stats (Attendance %, etc.).
+  3. Parent can view a visual attendance calendar (Monthly history).
+**Plans**: 2 plans
+**UI hint**: yes
+
+Plans:
+- [ ] 03-01: Parent Dashboard & Child Selector.
+- [ ] 03-02: Attendance Calendar View & Status Alerts.
+
+### Phase 4: Learning Management System (LMS)
+**Goal**: Facilitate digital homework distribution and study material access.
+**Depends on**: Phase 1
+**Requirements**: T-ACT-02, P-ACT-02 (Homework tracking)
+**Success Criteria**:
+  1. Teacher can upload homework files and study materials.
+  2. Parent/Child can view and download assigned homework.
+  3. Homework due dates are color-coded (Green/Amber/Red).
+**Plans**: 2 plans
+**UI hint**: yes
+
+Plans:
+- [ ] 04-01: Homework & Study Material Upload (Teacher).
+- [ ] 04-02: Homework Tracker & Submission Status (Parent).
+
+### Phase 5: Financials & Academic Results
+**Goal**: Handle exam results entry and secure fee payments.
+**Depends on**: Phase 2, Phase 3
+**Requirements**: T-ACT-03, P-ACT-02, P-ACT-03, P-ACT-04
+**Success Criteria**:
+  1. Teacher can enter marks with auto-grade calculation.
+  2. Parent can view exam results and subject performance trends.
+  3. Parent can view fee status and initiate online payment via Razorpay.
+**Plans**: 3 plans
+**UI hint**: yes
+
+Plans:
+- [ ] 05-01: Marks Entry & Grading Engine (Teacher).
+- [ ] 05-02: Academic Results & Analytics (Parent).
+- [ ] 05-03: Fee Management & Razorpay Integration.
+
+### Phase 6: Advanced Communication & Polish
+**Goal**: Finalize communication tools, behavioral tracking, and app-wide polish.
+**Depends on**: Phase 4, Phase 5
+**Requirements**: COMM-01, COMM-02, COMM-03, COMM-04, T-CORE-03, T-ACT-04, P-MEET-01
+**Success Criteria**:
+  1. Unified in-app notification center for all event types.
+  2. Parent can book meetings (PTM) with available teachers.
+  3. Teacher can create lesson plans and view behavioral reports.
+  4. PDF generation for report cards and fee receipts works correctly.
+**Plans**: 3 plans
+**UI hint**: yes
+
+Plans:
+- [ ] 06-01: Notification System & Notices Board.
+- [ ] 06-02: PTM Booking & Behavioural Reports.
+- [ ] 06-03: Lesson Planning & PDF/Polish deliverables.
+
+---
+
+## Progress
+
+| Phase | Plans Complete | Status | Completed |
+|-------|----------------|--------|-----------|
+| 1. Foundation & Auth | 0/3 | Not started | - |
+| 2. Teacher Core | 0/2 | Not started | - |
+| 3. Parent Core | 0/2 | Not started | - |
+| 4. LMS | 0/2 | Not started | - |
+| 5. Financials & Results | 0/3 | Not started | - |
+| 6. Polish & Comms | 0/3 | Not started | - |
+
+---
+*Roadmap created: 2026-03-23*
