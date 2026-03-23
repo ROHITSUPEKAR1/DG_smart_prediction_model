@@ -16,10 +16,12 @@ Providing a seamless, real-time communication and management bridge between teac
 - [x] **Secure Auth System**: Dual-persona (Teacher/Parent) JWT login with OTP support and Refresh token rotation. (Validated in Phase 1)
 - [x] **Foundational Backend**: Node.js + Express with Knex scoping middleware. (Validated in Phase 1)
 - [x] **Foundational Flutter App**: Riverpod-based mobile base with responsive, role-based theming. (Validated in Phase 1)
+- [x] **Teacher Dashboard**: Chronological timeline showing "Today's Schedule" with progress indicator. (Validated in Phase 2)
+- [x] **Attendance Marking**: Multi-tenant marking grid with real-time tally and bulk submission. (Validated in Phase 2)
 
 ### Active
 
-- [ ] Teacher Mobile App: Dashboard, Attendance marking, Homework/Study material upload, Marks entry, and Timetable.
+- [ ] Teacher Mobile App: Homework/Study material upload, Marks entry, and Timetable management.
 - [ ] Parent Mobile App: Dashboard (multi-child support), Attendance tracking, Results/Analytics, Fee management, and Meeting booking.
 - [ ] Real-time push notifications via Firebase Cloud Messaging (FCM).
 - [ ] Automated grade calculation and attendance risk alerts.
