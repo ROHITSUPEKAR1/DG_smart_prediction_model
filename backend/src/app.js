@@ -26,6 +26,10 @@ app.use('/api/parent', auth, requireRole('parent'), require('./routes/parent'));
 app.use('/api/fee', auth, requireRole('parent'), require('./routes/fee'));
 app.use('/api/result', auth, require('./routes/result'));
 app.use('/api/homework', auth, requireRole('teacher'), require('./routes/homework'));
+app.use('/api/meeting', auth, require('./routes/meeting'));
+
+// Background Workers
+require('./cron/meetingReminders');
 
 // Health Check Endpoint
 app.get('/api/health', (req, res) => {
