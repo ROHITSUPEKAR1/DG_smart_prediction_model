@@ -2,6 +2,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_app/features/parent/providers/parent_children_provider.dart';
 import 'package:mobile_app/features/parent/views/attendance_history_view.dart';
+import 'package:mobile_app/features/parent/views/fee_ledger_view.dart';
 
 class QuickActionGrid extends ConsumerWidget {
   const QuickActionGrid({super.key});
@@ -32,7 +33,14 @@ class QuickActionGrid extends ConsumerWidget {
             crossAxisSpacing: 15,
             childAspectRatio: 1.4,
             children: [
-              _buildActionCard(context, 'Fees', Icons.payment_rounded, Colors.purple, () {}),
+              _buildActionCard(context, 'Fees', Icons.payment_rounded, Colors.purple, () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FeeLedgerView(childName: selectedChild.name),
+                  ),
+                );
+              }),
               _buildActionCard(context, 'Attendance', Icons.calendar_month_rounded, Colors.green, () {
                 Navigator.push(
                   context,
