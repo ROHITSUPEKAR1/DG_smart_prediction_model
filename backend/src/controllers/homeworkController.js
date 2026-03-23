@@ -12,8 +12,19 @@ exports.addHomework = async (req, res) => {
   try {
     await Homework.bulkCreate(school_id, user_id, subject, caption, class_ids, attachment_url);
     
-    // In production, trigger FCM notification to all parents in the targeted classes here
-    
+    // Dispatch Notifications
+    const NotificationService = require('../services/notificationService');
+    const title = `New Homework: ${subject}`;
+    const msg = caption;
+
+    for (const classId of class_ids) {
+      await NotificationService.broadcastToTopic(school_id, `class_${classId}`, {
+        title,
+        body: msg,
+        data: { type: 'homework', subject }
+      });
+    }
+
     res.status(201).json({ message: 'Homework posted successfully to targeted classes' });
   } catch (err) {
     res.status(500).json({ error: err.message });

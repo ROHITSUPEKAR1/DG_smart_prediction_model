@@ -48,6 +48,28 @@ exports.submitAttendance = async (req, res) => {
     }));
 
     await Attendance.bulkSubmit(school_id, user_id, records);
+
+    // Dispatch Absence Alerts
+    const NotificationService = require('../services/notificationService');
+    const Notification = require('../models/Notification');
+
+    for (const s of students) {
+      if (s.status === 'A') {
+        const title = 'Student Absence Alert';
+        const msg = `${s.name || 'Your child'} has been marked ABSENT for Period ${period_id || 'Current'}.`;
+        
+        // Log to DB
+        await Notification.logNotification(school_id, s.id, 'absence', title, msg, 'high');
+        
+        // Mock FCM Dispatch
+        await NotificationService.sendPush(school_id, 'DEVICE_TOKEN_LOOKUP_NEEDED', {
+          title,
+          body: msg,
+          data: { type: 'absence', student_id: s.id.toString() }
+        });
+      }
+    }
+
     res.status(200).json({ message: 'Attendance recorded successfully' });
   } catch (err) {
     res.status(500).json({ error: err.message });
