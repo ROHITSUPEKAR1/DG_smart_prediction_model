@@ -12,15 +12,15 @@ Providing a seamless, real-time communication and management bridge between teac
 
 ### Validated
 
-(None yet — ship to validate)
+- [x] **Multi-tenant architecture**: Shared database infrastructure with strict `school_id` isolation. (Validated in Phase 1)
+- [x] **Secure Auth System**: Dual-persona (Teacher/Parent) JWT login with OTP support and Refresh token rotation. (Validated in Phase 1)
+- [x] **Foundational Backend**: Node.js + Express with Knex scoping middleware. (Validated in Phase 1)
+- [x] **Foundational Flutter App**: Riverpod-based mobile base with responsive, role-based theming. (Validated in Phase 1)
 
 ### Active
 
-- [ ] Multi-tenant school management architecture with `school_id` scoping.
-- [ ] Secure JWT-based authentication system with Role-Based Access Control (Teacher/Parent).
 - [ ] Teacher Mobile App: Dashboard, Attendance marking, Homework/Study material upload, Marks entry, and Timetable.
 - [ ] Parent Mobile App: Dashboard (multi-child support), Attendance tracking, Results/Analytics, Fee management, and Meeting booking.
-- [ ] Shared Node.js REST API with Express.js and MySQL.
 - [ ] Real-time push notifications via Firebase Cloud Messaging (FCM).
 - [ ] Automated grade calculation and attendance risk alerts.
 
@@ -47,10 +47,10 @@ Providing a seamless, real-time communication and management bridge between teac
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Flutter for Mobile | Single codebase for iOS and Android with high UI performance | — Pending |
-| MySQL for DB | Relational consistency needed for complex academic records | — Pending |
-| JWT with Refresh | Balance between security and user experience on mobile | — Pending |
-| Multi-tenant Schema | Efficient scaling for multiple schools using shared infra | — Pending |
+| Flutter for Mobile | Single codebase for iOS and Android with high UI performance | **Finalized**: Riverpod 2.0 + Theme-flipping state. |
+| MySQL + Knex | Relational consistency needed for complex academic records with custom scoping | **Finalized**: Multi-tenant `withSchoolScope`. |
+| JWT with Refresh | Balance between security and user experience on mobile | **Finalized**: 1h Access / 30d Refresh strategy. |
+| Multi-tenant Schema | Efficient scaling for multiple schools using shared infra | **Finalized**: One table per entity, `school_id` required for all queries. |
 
 ## Evolution
 
