@@ -24,6 +24,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/attendance', auth, requireRole('teacher'), require('./routes/attendance'));
 app.use('/api/parent', auth, requireRole('parent'), require('./routes/parent'));
 app.use('/api/fee', auth, requireRole('parent'), require('./routes/fee'));
+app.use('/api/result', auth, require('./routes/result'));
 app.use('/api/homework', auth, requireRole('teacher'), require('./routes/homework'));
 
 // Health Check Endpoint
