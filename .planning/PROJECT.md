@@ -20,10 +20,12 @@ Providing a seamless, real-time communication and management bridge between teac
 - [x] **Attendance Marking**: Multi-tenant marking grid with real-time tally and bulk submission. (Validated in Phase 2)
 - [x] **Parent Dashboard**: Multi-child context switcher and hero attendance status. (Validated in Phase 3)
 - [x] **Attendance History**: Weekly scroller and historical tracking for parental tracking. (Validated in Phase 3)
+- [x] **Teacher Schedule**: 5-day weekly grid for advanced lesson planning. (Validated in Phase 4)
+- [x] **Homework/Resource Assignment**: Multi-class targeting and photo/file upload. (Validated in Phase 4)
 
 ### Active
 
-- [ ] Teacher Mobile App: Homework/Study material upload, Marks entry, and Timetable management.
+- [ ] Teacher Mobile App: Marks entry and Exam management.
 - [ ] Parent Mobile App: Results/Analytics, Fee management, and Meeting booking.
 - [ ] Real-time push notifications via Firebase Cloud Messaging (FCM).
 - [ ] Automated grade calculation and attendance risk alerts.
