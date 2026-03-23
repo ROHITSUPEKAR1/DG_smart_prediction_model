@@ -18,11 +18,13 @@ Providing a seamless, real-time communication and management bridge between teac
 - [x] **Foundational Flutter App**: Riverpod-based mobile base with responsive, role-based theming. (Validated in Phase 1)
 - [x] **Teacher Dashboard**: Chronological timeline showing "Today's Schedule" with progress indicator. (Validated in Phase 2)
 - [x] **Attendance Marking**: Multi-tenant marking grid with real-time tally and bulk submission. (Validated in Phase 2)
+- [x] **Parent Dashboard**: Multi-child context switcher and hero attendance status. (Validated in Phase 3)
+- [x] **Attendance History**: Weekly scroller and historical tracking for parental tracking. (Validated in Phase 3)
 
 ### Active
 
 - [ ] Teacher Mobile App: Homework/Study material upload, Marks entry, and Timetable management.
-- [ ] Parent Mobile App: Dashboard (multi-child support), Attendance tracking, Results/Analytics, Fee management, and Meeting booking.
+- [ ] Parent Mobile App: Results/Analytics, Fee management, and Meeting booking.
 - [ ] Real-time push notifications via Firebase Cloud Messaging (FCM).
 - [ ] Automated grade calculation and attendance risk alerts.
 
