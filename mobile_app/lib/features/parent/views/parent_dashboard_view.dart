@@ -5,6 +5,9 @@ import 'package:mobile_app/features/parent/providers/parent_children_provider.da
 import 'package:mobile_app/features/parent/widgets/child_switcher_bar.dart';
 import 'package:mobile_app/features/parent/widgets/hero_attendance_card.dart';
 import 'package:mobile_app/features/parent/widgets/quick_action_grid.dart';
+import 'package:mobile_app/features/parent/widgets/emergency_alert_banner.dart';
+import 'package:mobile_app/features/shared/views/notifications_inbox_view.dart';
+import 'package:mobile_app/features/shared/providers/notifications_provider.dart';
 
 class ParentDashboardView extends ConsumerWidget {
   const ParentDashboardView({super.key});
@@ -22,7 +25,14 @@ class ParentDashboardView extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Top Section: Header & Profile
-              _buildHeader(theme, 'Sarah Sharma'),
+              _buildHeader(context, ref, theme, 'Sarah Sharma'),
+
+              EmergencyAlertBanner(
+                message: 'School will be CLOSED tomorrow due to torrential rain.',
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const NotificationsInboxView()));
+                },
+              ),
 
               // Multi-child switcher
               const ChildSwitcherBar(),
@@ -46,35 +56,60 @@ class ParentDashboardView extends ConsumerWidget {
     );
   }
 
-  Widget _buildHeader(ThemeData theme, String parentName) {
+  Widget _buildHeader(BuildContext context, WidgetRef ref, ThemeData theme, String parentName) {
+    final unreadCount = ref.watch(notificationsProvider.notifier).unreadCount;
+
     return Container(
       padding: const EdgeInsets.all(24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
             children: [
-              Text(
-                'Namaste,',
-                style: GoogleFonts.outfit(
-                  fontSize: 16,
-                  color: const Color(0xFF64748B),
-                ),
+              const CircleAvatar(
+                radius: 24,
+                backgroundImage: NetworkImage('https://ui-avatars.com/api/?name=S+Sharma&background=f093fb&color=fff'),
               ),
-              Text(
-                parentName,
-                style: GoogleFonts.outfit(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  color: const Color(0xFF1E293B),
-                ),
+              const SizedBox(width: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Namaste,',
+                    style: GoogleFonts.outfit(fontSize: 14, color: const Color(0xFF64748B)),
+                  ),
+                  Text(
+                    parentName,
+                    style: GoogleFonts.outfit(fontSize: 22, fontWeight: FontWeight.bold, color: const Color(0xFF1E293B)),
+                  ),
+                ],
               ),
             ],
           ),
-          const CircleAvatar(
-            radius: 24,
-            backgroundImage: NetworkImage('https://ui-avatars.com/api/?name=S+Sharma&background=f093fb&color=fff'),
+          Stack(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.notifications_none_rounded, size: 28, color: Color(0xFF1E293B)),
+                onPressed: () {
+                   Navigator.push(context, MaterialPageRoute(builder: (context) => const NotificationsInboxView()));
+                },
+              ),
+              if (unreadCount > 0)
+                Positioned(
+                  right: 8,
+                  top: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: const BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+                    constraints: const BoxConstraints(minWidth: 16, minHeight: 16),
+                    child: Text(
+                      unreadCount.toString(),
+                      style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+            ],
           ),
         ],
       ),
