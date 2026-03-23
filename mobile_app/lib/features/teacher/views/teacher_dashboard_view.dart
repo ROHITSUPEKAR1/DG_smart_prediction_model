@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_app/features/teacher/providers/teacher_schedule_provider.dart';
 import 'package:mobile_app/features/teacher/widgets/stats_summary_row.dart';
 import 'package:mobile_app/features/teacher/widgets/timeline_schedule_card.dart';
+import 'package:mobile_app/features/teacher/views/teacher_timetable_view.dart';
 
 class TeacherDashboardView extends ConsumerWidget {
   const TeacherDashboardView({super.key});
@@ -41,7 +42,12 @@ class TeacherDashboardView extends ConsumerWidget {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const TeacherTimetableView()),
+                      );
+                    },
                     child: Text(
                       'Full Timetable',
                       style: GoogleFonts.outfit(
