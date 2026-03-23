@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_app/features/teacher/providers/teacher_schedule_provider.dart';
+import 'package:mobile_app/features/teacher/views/add_homework_view.dart';
 
 class TimetableGridCell extends StatelessWidget {
   final ClassSchedule schedule;
@@ -17,7 +18,14 @@ class TimetableGridCell extends StatelessWidget {
     final theme = Theme.of(context);
     final isFree = schedule.title.toLowerCase() == 'free';
 
-    return Container(
+    return GestureDetector(
+      onTap: isFree ? null : () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const AddHomeworkView()),
+        );
+      },
+      child: Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -90,6 +98,7 @@ class TimetableGridCell extends StatelessWidget {
             ),
         ],
       ),
-    );
-  }
+    ),
+  );
+}
 }
