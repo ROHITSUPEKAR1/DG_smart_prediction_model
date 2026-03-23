@@ -1,11 +1,15 @@
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobile_app/features/parent/providers/parent_children_provider.dart';
+import 'package:mobile_app/features/parent/views/attendance_history_view.dart';
 
-class QuickActionGrid extends StatelessWidget {
+class QuickActionGrid extends ConsumerWidget {
   const QuickActionGrid({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectedChild = ref.watch(selectedChildProvider);
+
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -28,10 +32,17 @@ class QuickActionGrid extends StatelessWidget {
             crossAxisSpacing: 15,
             childAspectRatio: 1.4,
             children: [
-              _buildActionCard('Fees', Icons.payment_rounded, Colors.purple),
-              _buildActionCard('Attendance', Icons.calendar_month_rounded, Colors.green),
-              _buildActionCard('Results', Icons.auto_graph_rounded, Colors.orange),
-              _buildActionCard('Homework', Icons.menu_book_rounded, Colors.blue),
+              _buildActionCard(context, 'Fees', Icons.payment_rounded, Colors.purple, () {}),
+              _buildActionCard(context, 'Attendance', Icons.calendar_month_rounded, Colors.green, () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AttendanceHistoryView(childName: selectedChild.name),
+                  ),
+                );
+              }),
+              _buildActionCard(context, 'Results', Icons.auto_graph_rounded, Colors.orange, () {}),
+              _buildActionCard(context, 'Homework', Icons.menu_book_rounded, Colors.blue, () {}),
             ],
           ),
         ],
@@ -39,40 +50,43 @@ class QuickActionGrid extends StatelessWidget {
     );
   }
 
-  Widget _buildActionCard(String label, IconData icon, Color color) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(24),
-        boxShadow: [
-          BoxShadow(
-            color: color.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(12),
+  Widget _buildActionCard(BuildContext context, String label, IconData icon, Color color, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(24),
+          boxShadow: [
+            BoxShadow(
+              color: color.withOpacity(0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
             ),
-            child: Icon(icon, color: color, size: 24),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            label,
-            style: GoogleFonts.outfit(
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
-              color: const Color(0xFF1E293B),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(icon, color: color, size: 24),
             ),
-          ),
-        ],
+            const SizedBox(height: 12),
+            Text(
+              label,
+              style: GoogleFonts.outfit(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: const Color(0xFF1E293B),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
