@@ -23,6 +23,21 @@ class Attendance extends BaseModel {
 
     return db(this.table).insert(formatted).onConflict(['student_id', 'date', 'period_id']).merge();
   }
+
+  /**
+   * Get Recent Attendance for a specific student.
+   * @param {number} schoolId 
+   * @param {number} studentId 
+   * @param {number} limit 
+   */
+  static async getRecentlyByStudent(schoolId, studentId, limit = 7) {
+    const db = require('../config/db');
+    return db(this.table)
+      .where('school_id', schoolId)
+      .where('student_id', studentId)
+      .orderBy('date', 'desc')
+      .limit(limit);
+  }
 }
 
 module.exports = Attendance;

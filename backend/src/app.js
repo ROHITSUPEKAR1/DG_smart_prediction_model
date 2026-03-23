@@ -22,6 +22,7 @@ const { auth, requireRole } = require('./middleware/auth');
 // Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/attendance', auth, requireRole('teacher'), require('./routes/attendance'));
+app.use('/api/parent', auth, requireRole('parent'), require('./routes/parent'));
 
 // Health Check Endpoint
 app.get('/api/health', (req, res) => {
