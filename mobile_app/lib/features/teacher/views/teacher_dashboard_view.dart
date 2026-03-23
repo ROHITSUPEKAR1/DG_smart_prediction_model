@@ -5,6 +5,7 @@ import 'package:mobile_app/features/teacher/providers/teacher_schedule_provider.
 import 'package:mobile_app/features/teacher/widgets/stats_summary_row.dart';
 import 'package:mobile_app/features/teacher/widgets/timeline_schedule_card.dart';
 import 'package:mobile_app/features/teacher/views/teacher_timetable_view.dart';
+import 'package:mobile_app/features/teacher/widgets/teacher_quick_actions.dart';
 
 class TeacherDashboardView extends ConsumerWidget {
   const TeacherDashboardView({super.key});
@@ -24,6 +25,8 @@ class TeacherDashboardView extends ConsumerWidget {
 
             // Stats row (Wave 2)
             const StatsSummaryRow(),
+
+            const TeacherQuickActions(),
 
             const SizedBox(height: 20),
 
