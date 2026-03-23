@@ -1,0 +1,73 @@
+# DG Smart – Teacher & Parent Panel
+
+## What This Is
+
+DG Smart is a cloud-based SaaS multi-tenant school management system. This project involves building two fully functional mobile applications—one for Teachers and one for Parents—serving the DG Smart ecosystem with a shared Node.js backend and MySQL database.
+
+## Core Value
+
+Providing a seamless, real-time communication and management bridge between teachers, parents, and school administration to improve educational outcomes and operational efficiency.
+
+## Requirements
+
+### Validated
+
+(None yet — ship to validate)
+
+### Active
+
+- [ ] Multi-tenant school management architecture with `school_id` scoping.
+- [ ] Secure JWT-based authentication system with Role-Based Access Control (Teacher/Parent).
+- [ ] Teacher Mobile App: Dashboard, Attendance marking, Homework/Study material upload, Marks entry, and Timetable.
+- [ ] Parent Mobile App: Dashboard (multi-child support), Attendance tracking, Results/Analytics, Fee management, and Meeting booking.
+- [ ] Shared Node.js REST API with Express.js and MySQL.
+- [ ] Real-time push notifications via Firebase Cloud Messaging (FCM).
+- [ ] Automated grade calculation and attendance risk alerts.
+
+### Out of Scope
+
+- [ ] Super Admin/Admin Panel (already exists or handled by separate desktop/web panel).
+- [ ] Student-specific Mobile App (scope is limited to Teacher and Parent panels for this phase).
+- [ ] Cross-tenant communication (data isolation between schools is strictly enforced).
+
+## Context
+
+- **Client**: Sarvaj Edtech Pvt Ltd.
+- **Project Scope**: Mobile expansion of existing school management infrastructure.
+- **Branding**: "DreamsGuider Style" — high-end pastel aesthetic with specific gradients (#667eea → #764ba2 for Teachers, #f093fb → #e91e63 for Parents).
+
+## Constraints
+
+- **Technology**: Flutter (Dart), Node.js (Express), MySQL, JWT, FCM.
+- **Security**: Role-based middleware and school-scoped queries are mandatory.
+- **Performance**: Mobile apps must handle real-time notifications and offline caching for basic stats.
+- **Aesthetics**: UI must be "premium and state-of-the-art" as per user requirements.
+
+## Key Decisions
+
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| Flutter for Mobile | Single codebase for iOS and Android with high UI performance | — Pending |
+| MySQL for DB | Relational consistency needed for complex academic records | — Pending |
+| JWT with Refresh | Balance between security and user experience on mobile | — Pending |
+| Multi-tenant Schema | Efficient scaling for multiple schools using shared infra | — Pending |
+
+## Evolution
+
+This document evolves at phase transitions and milestone boundaries.
+
+**After each phase transition** (via `/gsd-transition`):
+1. Requirements invalidated? → Move to Out of Scope with reason
+2. Requirements validated? → Move to Validated with phase reference
+3. New requirements emerged? → Add to Active
+4. Decisions to log? → Add to Key Decisions
+5. "What This Is" still accurate? → Update if drifted
+
+**After each milestone** (via `/gsd-complete-milestone`):
+1. Full review of all sections
+2. Core Value check — still the right priority?
+3. Audit Out of Scope — reasons still valid?
+4. Update Context with current state
+
+---
+*Last updated: 2026-03-23 after project initialization*
