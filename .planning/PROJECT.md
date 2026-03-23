@@ -28,12 +28,14 @@ Providing a seamless, real-time communication and management bridge between teac
 - [x] **Academic Analytics**: Radar & Trend charts for multi-exam tracking. (Validated in Phase 6)
 - [x] **Real-time Messaging**: Broadcast notice board and automated FCM triggers. (Validated in Phase 7)
 - [x] **Automated Grade Calculation**: Percentage to A+/F mapping engine. (Validated in Phase 6/7)
+- [x] **Meeting & PTM Booking**: TableCalendar request flow with teacher triage. (Validated in Phase 8)
+- [x] **1-Hour Proximity Reminders**: Automated backend cron for meeting alerts. (Validated in Phase 8)
 
 ### Active
 
-- [ ] Teacher Mobile App: Exam session management.
-- [ ] Parent Mobile App: Meeting/PTM booking.
-- [ ] Attendance risk alerts (Predictive).
+- [ ] Teacher Mobile App: Exam session management (In-depth).
+- [ ] Attendance risk alerts (Predictive AI).
+- [ ] Push Notifications for critical system alerts.
 
 ### Out of Scope
 
