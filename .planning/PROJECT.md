@@ -26,13 +26,14 @@ Providing a seamless, real-time communication and management bridge between teac
 - [x] **Mock Payment Gateway**: Secure transaction simulation with PDF receipt download. (Validated in Phase 5)
 - [x] **Teacher Marks Entry**: Spreadsheet-style batch listing for high-speed grading. (Validated in Phase 6)
 - [x] **Academic Analytics**: Radar & Trend charts for multi-exam tracking. (Validated in Phase 6)
+- [x] **Real-time Messaging**: Broadcast notice board and automated FCM triggers. (Validated in Phase 7)
+- [x] **Automated Grade Calculation**: Percentage to A+/F mapping engine. (Validated in Phase 6/7)
 
 ### Active
 
 - [ ] Teacher Mobile App: Exam session management.
 - [ ] Parent Mobile App: Meeting/PTM booking.
-- [ ] Real-time push notifications via Firebase Cloud Messaging (FCM).
-- [ ] Automated grade calculation and attendance risk alerts.
+- [ ] Attendance risk alerts (Predictive).
 
 ### Out of Scope
 
