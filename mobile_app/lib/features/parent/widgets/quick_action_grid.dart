@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_app/features/parent/providers/parent_children_provider.dart';
 import 'package:mobile_app/features/parent/views/attendance_history_view.dart';
 import 'package:mobile_app/features/parent/views/fee_ledger_view.dart';
+import 'package:mobile_app/features/parent/views/academic_analytics_view.dart';
 
 class QuickActionGrid extends ConsumerWidget {
   const QuickActionGrid({super.key});
@@ -49,7 +50,14 @@ class QuickActionGrid extends ConsumerWidget {
                   ),
                 );
               }),
-              _buildActionCard(context, 'Results', Icons.auto_graph_rounded, Colors.orange, () {}),
+              _buildActionCard(context, 'Results', Icons.auto_graph_rounded, Colors.orange, () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AcademicAnalyticsView(childName: selectedChild.name),
+                  ),
+                );
+              }),
               _buildActionCard(context, 'Homework', Icons.menu_book_rounded, Colors.blue, () {}),
             ],
           ),
