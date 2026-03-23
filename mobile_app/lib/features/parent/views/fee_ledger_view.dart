@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_app/features/parent/providers/fee_ledger_provider.dart';
 import 'package:mobile_app/features/parent/widgets/installment_status_card.dart';
+import 'package:mobile_app/features/parent/views/payment_mock_view.dart';
 
 class FeeLedgerView extends ConsumerWidget {
   final String childName;
@@ -36,7 +37,12 @@ class FeeLedgerView extends ConsumerWidget {
                   return InstallmentStatusCard(
                     installment: installment,
                     onTap: () {
-                      // Navigate to Mock Payment Screen (Wave 3)
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PaymentMockView(installment: installment),
+                        ),
+                      );
                     },
                   );
                 },
