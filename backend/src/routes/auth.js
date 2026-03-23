@@ -21,4 +21,10 @@ router.post('/login', authController.loginWithOtpPassword);
  */
 router.post('/refresh', authController.refreshToken);
 
+/**
+ * @route POST /api/auth/fcm-token
+ * @desc Register FCM Token for notifications.
+ */
+router.post('/fcm-token', authController.registerFcmToken);
+
 module.exports = router;

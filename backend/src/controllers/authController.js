@@ -92,3 +92,18 @@ exports.refreshToken = async (req, res) => {
     res.status(403).json({ error: 'Invalid token' });
   }
 };
+
+exports.registerFcmToken = async (req, res) => {
+  const { fcm_token } = req.body;
+  if (!fcm_token) return res.status(400).json({ error: 'FCM token required' });
+
+  try {
+    // In v1, we just log this as FCM infrastructure depends on Firebase setup.
+    // In production, this would save to user_devices(user_id, school_id, fcm_token)
+    console.log(`[FCM] Registered token for user ${req.user_id} in school ${req.school_id}: ${fcm_token}`);
+    
+    res.status(200).json({ message: 'FCM token registered successfully' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
