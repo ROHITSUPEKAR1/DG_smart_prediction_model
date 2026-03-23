@@ -24,11 +24,13 @@ Providing a seamless, real-time communication and management bridge between teac
 - [x] **Homework/Resource Assignment**: Multi-class targeting and photo/file upload. (Validated in Phase 4)
 - [x] **Parent Fee Management**: Installment ledger with status-colored tracking. (Validated in Phase 5)
 - [x] **Mock Payment Gateway**: Secure transaction simulation with PDF receipt download. (Validated in Phase 5)
+- [x] **Teacher Marks Entry**: Spreadsheet-style batch listing for high-speed grading. (Validated in Phase 6)
+- [x] **Academic Analytics**: Radar & Trend charts for multi-exam tracking. (Validated in Phase 6)
 
 ### Active
 
-- [ ] Teacher Mobile App: Marks entry and Exam management.
-- [ ] Parent Mobile App: Results/Analytics and Meeting booking.
+- [ ] Teacher Mobile App: Exam session management.
+- [ ] Parent Mobile App: Meeting/PTM booking.
 - [ ] Real-time push notifications via Firebase Cloud Messaging (FCM).
 - [ ] Automated grade calculation and attendance risk alerts.
 
