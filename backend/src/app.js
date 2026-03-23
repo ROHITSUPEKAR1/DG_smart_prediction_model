@@ -17,6 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 // Multi-tenant Scoping Middleware
 app.use(schoolScope);
 
+// Routes
+app.use('/api/auth', require('./routes/auth'));
+
 // Health Check Endpoint
 app.get('/api/health', (req, res) => {
   res.status(200).json({
