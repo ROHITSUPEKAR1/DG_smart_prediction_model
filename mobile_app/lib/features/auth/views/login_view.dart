@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_app/app.dart';
 import 'package:mobile_app/features/teacher/views/teacher_dashboard_view.dart';
+import 'package:mobile_app/features/parent/views/parent_dashboard_view.dart';
 
 class LoginView extends ConsumerStatefulWidget {
   const LoginView({super.key});
@@ -182,10 +183,14 @@ class _LoginViewState extends ConsumerState<LoginView> with SingleTickerProvider
                   // Login Button
                   ElevatedButton(
                     onPressed: () {
-                      // Trigger Login Flow
+                      final isTeacher = ref.read(roleProvider) == 'teacher';
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const TeacherDashboardView()),
+                        MaterialPageRoute(
+                          builder: (context) => isTeacher 
+                            ? const TeacherDashboardView() 
+                            : const ParentDashboardView()
+                        ),
                       );
                     },
                     child: const Text('Login'),
