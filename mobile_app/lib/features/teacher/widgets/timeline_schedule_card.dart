@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_app/features/teacher/providers/teacher_schedule_provider.dart';
+import 'package:mobile_app/features/teacher/views/attendance_marking_view.dart';
 
 class TimelineScheduleCard extends StatelessWidget {
   final ClassSchedule schedule;
@@ -48,8 +49,20 @@ class TimelineScheduleCard extends StatelessWidget {
 
           // Schedule Card
           Expanded(
-            child: Container(
-              padding: const EdgeInsets.all(20),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AttendanceMarkingView(
+                      classTitle: schedule.title,
+                      subject: schedule.subject,
+                    ),
+                  ),
+                );
+              },
+              child: Container(
+                padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: isCurrent ? theme.primaryColor.withOpacity(0.05) : Colors.white,
                 borderRadius: BorderRadius.circular(24),
