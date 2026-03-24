@@ -33,9 +33,21 @@ Providing a seamless, real-time communication and management bridge between teac
 - [x] **Exam Session Management**: Teacher Control Hub, draft/publish lifecycle, and PDF Class Exports. (Validated in Phase 9)
 - [x] **Predictive AI Engine**: Nightly compute scaling raw datasets to active high-risk anomalies triggering dynamic Parent Banner hijack UI. (Validated in Phase 10)
 
+## Current Milestone: v1.1 System Hardening & Optimization
+
+**Goal:** Transform the MVP into a highly fault-tolerant, performant, and deeply optimized production-ready system capable of handling thousands of active concurrent users securely.
+
+**Target features:**
+- Offline Caching Engine
+- Database Query Tuning
+- Comprehensive UX/UI Polish
+
 ### Active
 
-- [ ] Wrap up / Final Polish.
+- [ ] Native offline-caching for Flutter networks
+- [ ] Query performance tuning and database indexing
+- [ ] Expand UI skeleton loaders and micro-animations
+
 
 
 ### Out of Scope
