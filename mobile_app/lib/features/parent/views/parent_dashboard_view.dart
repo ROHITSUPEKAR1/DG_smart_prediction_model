@@ -79,27 +79,35 @@ class ParentDashboardView extends ConsumerWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              const CircleAvatar(
-                radius: 24,
-                backgroundImage: NetworkImage('https://ui-avatars.com/api/?name=S+Sharma&background=f093fb&color=fff'),
-              ),
-              const SizedBox(width: 15),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Namaste,',
-                    style: GoogleFonts.outfit(fontSize: 14, color: const Color(0xFF64748B)),
+          Flexible(
+            child: Row(
+              children: [
+                const CircleAvatar(
+                  radius: 24,
+                  backgroundImage: NetworkImage('https://ui-avatars.com/api/?name=S+Sharma&background=f093fb&color=fff'),
+                ),
+                const SizedBox(width: 15),
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Namaste,',
+                        style: GoogleFonts.outfit(fontSize: 14, color: const Color(0xFF64748B)),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        parentName,
+                        style: GoogleFonts.outfit(fontSize: 22, fontWeight: FontWeight.bold, color: const Color(0xFF1E293B)),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
                   ),
-                  Text(
-                    parentName,
-                    style: GoogleFonts.outfit(fontSize: 22, fontWeight: FontWeight.bold, color: const Color(0xFF1E293B)),
-                  ),
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
           Stack(
             children: [

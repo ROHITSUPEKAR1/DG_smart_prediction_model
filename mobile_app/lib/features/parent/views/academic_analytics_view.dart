@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_app/features/parent/providers/result_analytics_provider.dart';
 import 'package:mobile_app/features/parent/widgets/subject_radar_chart.dart';
 import 'package:mobile_app/features/parent/widgets/exam_trend_line.dart';
+import 'package:mobile_app/core/widgets/skeleton_card.dart';
 
 class AcademicAnalyticsView extends ConsumerWidget {
   final String childName;
@@ -43,7 +44,18 @@ class AcademicAnalyticsView extends ConsumerWidget {
             ],
           ),
         ),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: const [
+              SkeletonCard(height: 250),
+              SizedBox(height: 20),
+              SkeletonCard(height: 200),
+              SizedBox(height: 20),
+              SkeletonCard(height: 150),
+            ],
+          ),
+        ),
         error: (err, stack) => Center(child: Text('Error: $err')),
       ),
     );

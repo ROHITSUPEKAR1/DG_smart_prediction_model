@@ -6,6 +6,7 @@ import 'package:mobile_app/features/teacher/widgets/stats_summary_row.dart';
 import 'package:mobile_app/features/teacher/widgets/timeline_schedule_card.dart';
 import 'package:mobile_app/features/teacher/views/teacher_timetable_view.dart';
 import 'package:mobile_app/features/teacher/widgets/teacher_quick_actions.dart';
+import 'package:mobile_app/core/widgets/skeleton_list.dart';
 
 class TeacherDashboardView extends ConsumerWidget {
   const TeacherDashboardView({super.key});
@@ -78,7 +79,7 @@ class TeacherDashboardView extends ConsumerWidget {
                     );
                   },
                 ),
-                loading: () => const Center(child: CircularProgressIndicator()),
+                loading: () => const SkeletonList(itemCount: 4, itemHeight: 90),
                 error: (err, stack) => Center(child: Text('Error: $err')),
               ),
             ),
@@ -94,25 +95,31 @@ class TeacherDashboardView extends ConsumerWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Good Morning,',
-                style: GoogleFonts.outfit(
-                  fontSize: 16,
-                  color: const Color(0xFF64748B),
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Good Morning,',
+                  style: GoogleFonts.outfit(
+                    fontSize: 16,
+                    color: const Color(0xFF64748B),
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-              Text(
-                teacherName,
-                style: GoogleFonts.outfit(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  color: const Color(0xFF1E293B),
+                Text(
+                  teacherName,
+                  style: GoogleFonts.outfit(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: const Color(0xFF1E293B),
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Container(
             padding: const EdgeInsets.all(4),

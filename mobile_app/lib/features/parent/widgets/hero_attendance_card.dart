@@ -39,26 +39,32 @@ class HeroAttendanceCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Today\'s Status',
-                    style: GoogleFonts.outfit(
-                      fontSize: 14,
-                      color: Colors.white.withOpacity(0.8),
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Today\'s Status',
+                      style: GoogleFonts.outfit(
+                        fontSize: 14,
+                        color: Colors.white.withOpacity(0.8),
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    child.name,
-                    style: GoogleFonts.outfit(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                    const SizedBox(height: 4),
+                    Text(
+                      child.name,
+                      style: GoogleFonts.outfit(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               _buildLargeStatusBadge(isPresent, isAbsent),
             ],
@@ -103,12 +109,16 @@ class HeroAttendanceCard extends StatelessWidget {
       children: [
         Icon(icon, color: Colors.white.withOpacity(0.6), size: 14),
         const SizedBox(width: 8),
-        Text(
-          text,
-          style: GoogleFonts.outfit(
-            fontSize: 12,
-            color: Colors.white.withOpacity(0.8),
-            fontWeight: FontWeight.w500,
+        Flexible(
+          child: Text(
+            text,
+            style: GoogleFonts.outfit(
+              fontSize: 12,
+              color: Colors.white.withOpacity(0.8),
+              fontWeight: FontWeight.w500,
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
       ],
