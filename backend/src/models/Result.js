@@ -9,6 +9,7 @@ class Result extends BaseModel {
   /**
    * Bulk save marks for a class.
    */
+  // Uses idx_results_school_class_exam for exam scoping and idx_results_school_student for student lookup
   static async bulkUpsertResults(schoolId, examId, subjectId, batchData) {
     return db.transaction(async trx => {
       for (const entry of batchData) {

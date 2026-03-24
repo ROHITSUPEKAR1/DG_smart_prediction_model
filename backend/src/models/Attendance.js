@@ -13,6 +13,7 @@ class Attendance extends BaseModel {
    * @param {number} teacherId 
    * @param {Array} records 
    */
+  // Uses idx_attendance_school_student_date for conflict resolution on (student_id, date, period_id)
   static async bulkSubmit(schoolId, teacherId, records) {
     const formatted = records.map(r => ({
       ...r,
@@ -30,6 +31,7 @@ class Attendance extends BaseModel {
    * @param {number} studentId 
    * @param {number} limit 
    */
+  // Uses idx_attendance_school_student_date for filtering by (school_id, student_id) + date ordering
   static async getRecentlyByStudent(schoolId, studentId, limit = 7) {
     const db = require('../config/db');
     return db(this.table)
