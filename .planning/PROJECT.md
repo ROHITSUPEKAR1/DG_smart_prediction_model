@@ -30,10 +30,10 @@ Providing a seamless, real-time communication and management bridge between teac
 - [x] **Automated Grade Calculation**: Percentage to A+/F mapping engine. (Validated in Phase 6/7)
 - [x] **Meeting & PTM Booking**: TableCalendar request flow with teacher triage. (Validated in Phase 8)
 - [x] **1-Hour Proximity Reminders**: Automated backend cron for meeting alerts. (Validated in Phase 8)
+- [x] **Exam Session Management**: Teacher Control Hub, draft/publish lifecycle, and PDF Class Exports. (Validated in Phase 9)
 
 ### Active
 
-- [ ] Teacher Mobile App: Exam session management (In-depth).
 - [ ] Attendance risk alerts (Predictive AI).
 - [ ] Push Notifications for critical system alerts.
 
