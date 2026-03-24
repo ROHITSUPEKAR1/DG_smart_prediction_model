@@ -30,6 +30,8 @@ app.use('/api/meeting', auth, require('./routes/meeting'));
 
 // Background Workers
 require('./cron/meetingReminders');
+require('./cron/riskEngine');
+require('./cron/morningDispatcher');
 
 // Health Check Endpoint
 app.get('/api/health', (req, res) => {
