@@ -31,11 +31,12 @@ Providing a seamless, real-time communication and management bridge between teac
 - [x] **Meeting & PTM Booking**: TableCalendar request flow with teacher triage. (Validated in Phase 8)
 - [x] **1-Hour Proximity Reminders**: Automated backend cron for meeting alerts. (Validated in Phase 8)
 - [x] **Exam Session Management**: Teacher Control Hub, draft/publish lifecycle, and PDF Class Exports. (Validated in Phase 9)
+- [x] **Predictive AI Engine**: Nightly compute scaling raw datasets to active high-risk anomalies triggering dynamic Parent Banner hijack UI. (Validated in Phase 10)
 
 ### Active
 
-- [ ] Attendance risk alerts (Predictive AI).
-- [ ] Push Notifications for critical system alerts.
+- [ ] Wrap up / Final Polish.
+
 
 ### Out of Scope
 
