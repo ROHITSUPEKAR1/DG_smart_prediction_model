@@ -9,6 +9,8 @@ import 'package:mobile_app/features/parent/widgets/emergency_alert_banner.dart';
 import 'package:mobile_app/features/shared/views/notifications_inbox_view.dart';
 import 'package:mobile_app/features/shared/providers/notifications_provider.dart';
 
+import 'package:mobile_app/features/parent/providers/predictive_alert_provider.dart';
+
 class ParentDashboardView extends ConsumerWidget {
   const ParentDashboardView({super.key});
 
@@ -16,6 +18,7 @@ class ParentDashboardView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final selectedChild = ref.watch(selectedChildProvider);
+    final risks = ref.watch(predictiveAlertProvider);
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -27,12 +30,24 @@ class ParentDashboardView extends ConsumerWidget {
               // Top Section: Header & Profile
               _buildHeader(context, ref, theme, 'Sarah Sharma'),
 
-              EmergencyAlertBanner(
-                message: 'School will be CLOSED tomorrow due to torrential rain.',
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const NotificationsInboxView()));
-                },
-              ),
+              if (risks.isNotEmpty)
+                EmergencyAlertBanner(
+                  title: risks.first['title'],
+                  message: risks.first['message'],
+                  type: risks.first['severity'] == 'high' ? AlertType.criticalRisk : AlertType.softWarning,
+                  onTap: () {
+                    // Logic to schedule PTM or Acknowledge
+                    ref.read(predictiveAlertProvider.notifier).acknowledgeAlert(risks.first['id']);
+                  },
+                )
+              else
+                EmergencyAlertBanner(
+                  message: 'School will be CLOSED tomorrow due to torrential rain.',
+                  type: AlertType.schoolCircular,
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const NotificationsInboxView()));
+                  },
+                ),
 
               // Multi-child switcher
               const ChildSwitcherBar(),
