@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_app/features/teacher/views/academic_control_hub.dart';
 import 'package:mobile_app/features/teacher/views/marks_entry_view.dart';
 import 'package:mobile_app/features/teacher/views/add_homework_view.dart';
 import 'package:mobile_app/features/teacher/views/teacher_meeting_view.dart';
@@ -29,7 +30,7 @@ class TeacherQuickActions extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _buildSmallAction(context, 'Post Marks', Icons.grading_rounded, Colors.blue, () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const MarksEntryView()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AcademicControlHub()));
               }),
               _buildSmallAction(context, 'Homework', Icons.assignment_turned_in_rounded, Colors.orange, () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const AddHomeworkView()));
