@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_app/features/teacher/providers/academic_control_provider.dart';
 import 'package:mobile_app/features/teacher/widgets/audit_subject_card.dart';
 
+import 'package:mobile_app/features/teacher/widgets/export_button.dart';
+
 class AcademicControlHub extends ConsumerWidget {
   const AcademicControlHub({super.key});
 
@@ -17,7 +19,9 @@ class AcademicControlHub extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Academic Control'),
         elevation: 0,
+        actions: const [ExportButton()],
       ),
+
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
