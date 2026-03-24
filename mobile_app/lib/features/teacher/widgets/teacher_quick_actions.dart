@@ -5,6 +5,8 @@ import 'package:mobile_app/features/teacher/views/marks_entry_view.dart';
 import 'package:mobile_app/features/teacher/views/add_homework_view.dart';
 import 'package:mobile_app/features/teacher/views/teacher_meeting_view.dart';
 
+import 'package:mobile_app/features/teacher/views/teacher_risk_hub.dart';
+
 class TeacherQuickActions extends StatelessWidget {
   const TeacherQuickActions({super.key});
 
@@ -35,7 +37,9 @@ class TeacherQuickActions extends StatelessWidget {
               _buildSmallAction(context, 'Homework', Icons.assignment_turned_in_rounded, Colors.orange, () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const AddHomeworkView()));
               }),
-              _buildSmallAction(context, 'Resources', Icons.folder_shared_rounded, Colors.purple, () {}),
+              _buildSmallAction(context, 'Insights', Icons.insights_rounded, Colors.purple, () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const TeacherRiskHub()));
+              }),
               _buildSmallAction(context, 'Meetings', Icons.handshake_rounded, Colors.green, () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const TeacherMeetingView()));
               }),
