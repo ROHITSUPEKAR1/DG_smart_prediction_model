@@ -1,4 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobile_app/core/cache/cache_manager.dart';
+import 'package:mobile_app/core/cache/cache_keys.dart';
 
 // Model for Student (Child)
 class ChildProfile {
@@ -17,6 +19,24 @@ class ChildProfile {
     this.profilePhoto,
     this.todayStatus = 'Pending',
   });
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'name': name,
+    'className': className,
+    'sectionName': sectionName,
+    'profilePhoto': profilePhoto,
+    'todayStatus': todayStatus,
+  };
+
+  factory ChildProfile.fromJson(Map<String, dynamic> json) => ChildProfile(
+    id: json['id'],
+    name: json['name'],
+    className: json['className'],
+    sectionName: json['sectionName'],
+    profilePhoto: json['profilePhoto'],
+    todayStatus: json['todayStatus'] ?? 'Pending',
+  );
 }
 
 class ParentChildrenNotifier extends StateNotifier<List<ChildProfile>> {
@@ -24,12 +44,30 @@ class ParentChildrenNotifier extends StateNotifier<List<ChildProfile>> {
     _loadChildren();
   }
 
-  void _loadChildren() {
-    // Mock Data for v1 UI dev
-    state = [
-      ChildProfile(id: 1, name: 'Aditya Sharma', className: '10', sectionName: 'A', todayStatus: 'Present'),
-      ChildProfile(id: 2, name: 'Esha Sharma', className: '5', sectionName: 'C', todayStatus: 'Absent'),
-    ];
+  Future<void> _loadChildren() async {
+    try {
+      // Mock Data for v1 UI dev (replace with real Dio call)
+      final children = [
+        ChildProfile(id: 1, name: 'Aditya Sharma', className: '10', sectionName: 'A', todayStatus: 'Present'),
+        ChildProfile(id: 2, name: 'Esha Sharma', className: '5', sectionName: 'C', todayStatus: 'Absent'),
+      ];
+
+      // Cache on success
+      await CacheManager.put(
+        CacheKeys.parentChildren,
+        children.map((c) => c.toJson()).toList(),
+      );
+
+      state = children;
+    } catch (e) {
+      // Fallback to cache on network failure
+      final cached = CacheManager.get<List<dynamic>>(CacheKeys.parentChildren);
+      if (cached != null) {
+        state = cached
+            .map((item) => ChildProfile.fromJson(Map<String, dynamic>.from(item)))
+            .toList();
+      }
+    }
   }
 }
 
